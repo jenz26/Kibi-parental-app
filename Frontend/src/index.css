@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark;
+    @apply font-sans antialiased;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+}
+
+@layer components {
+  .main-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-title {
+    @apply text-3xl font-bold text-primary dark:text-primary-light mb-6 text-center sm:text-left;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-neutral-dark shadow-lg rounded-lg overflow-hidden transition-all duration-300 ease-in-out;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-xl hover:transform hover:-translate-y-1;
+  }
+
+  /* Stili per react-hot-toast */
+  .toast-success {
+    @apply bg-green-500 text-white;
+  }
+  .toast-error {
+    @apply bg-red-500 text-white;
+  }
+  .toast-info {
+    @apply bg-blue-500 text-white;
+  }
+}
