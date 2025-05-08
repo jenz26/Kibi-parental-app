@@ -1,15 +1,13 @@
-import { useState } from 'react';
+// src/components/common/Header.jsx
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon, UserCircleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
-import { motion, AnimatePresence } from 'framer-motion';
+import { SunIcon, MoonIcon, UserCircleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'; // UserCircleIcon potrebbe servire per mobile
 import { logout } from '../../features/auth/authSlice';
-import KibiLogo from '../../assets/images/kibi-logo.webp'; // Assicurati che il path sia corretto
+import KibiLogo from '../../assets/images/kibi-logo.webp';
 import Button from './Button';
-import { useDarkMode } from '../../hooks/useDarkMode'; // Importa l'hook
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -17,7 +15,6 @@ const Header = () => {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/blog', label: 'Blog' },
-    // Aggiungi altri link pubblici qui se necessario
   ];
 
   const authenticatedLinks = [
@@ -31,13 +28,11 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    setIsMobileMenuOpen(false); // Chiudi il menu mobile al logout
   };
 
-  const NavItem = ({ path, label, onClick }) => (
+  const NavItemDesktop = ({ path, label }) => ( // Rinomino per chiarezza
     <NavLink
       to={path}
-      onClick={onClick}
       className={({ isActive }) =>
         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
           isActive
@@ -51,10 +46,11 @@ const Header = () => {
   );
 
   return (
+    // L'header ora è sempre visibile, le classi hidden/md:flex saranno sugli elementi interni
     <header className="bg-white dark:bg-neutral-dark shadow-md sticky top-0 z-50 transition-colors duration-300">
       <div className="main-container">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - Sempre visibile */}
           <Link to="/" className="flex items-center">
             <img src={KibiLogo} alt="Kibi Logo" className="h-8 w-auto mr-2" />
             <span className="font-semibold text-xl text-primary dark:text-primary-light">
@@ -62,18 +58,18 @@ const Header = () => {
             </span>
           </Link>
 
-          {/* Navigazione Desktop */}
+          {/* Navigazione Desktop - Nascosta su mobile, visibile su desktop */}
           <nav className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
-              <NavItem key={link.path} path={link.path} label={link.label} />
+              <NavItemDesktop key={link.path} path={link.path} label={link.label} />
             ))}
             {isAuthenticated && authenticatedLinks.map((link) => (
-              <NavItem key={link.path} path={link.path} label={link.label} />
+              <NavItemDesktop key={link.path} path={link.path} label={link.label} />
             ))}
           </nav>
 
-          {/* Azioni Utente e Dark Mode Toggle */}
-          <div className="flex items-center space-x-3">
+          {/* Azioni a destra: Dark Mode Toggle (sempre visibile) e Login/Profilo (condizionale per desktop) */}
+          <div className="flex items-center space-x-2 sm:space-x-3"> {/* Aggiustato space-x per coerenza */}
             <Button
               onClick={toggleDarkMode}
               variant="ghost"
@@ -84,10 +80,11 @@ const Header = () => {
               {isDarkMode ? (
                 <SunIcon className="h-5 w-5 text-yellow-400" />
               ) : (
-                <MoonIcon className="h-5 w-5 text-neutral-dark" />
+                <MoonIcon className="h-5 w-5 text-neutral-dark dark:text-neutral-light" />
               )}
             </Button>
 
+            {/* Azioni Utente specifiche per Desktop (nascoste su mobile) */}
             {isAuthenticated ? (
               <div className="hidden md:flex items-center space-x-2">
                 <span className="text-sm text-neutral-dark dark:text-neutral-light">Ciao, {user?.name || 'Utente'}</span>
@@ -103,56 +100,16 @@ const Header = () => {
               </div>
             )}
 
-            {/* Hamburger Menu Icon */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="p-2"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Apri menu"
-              >
-                {isMobileMenuOpen ? (
-                  <XMarkIcon className="h-6 w-6 text-neutral-dark dark:text-neutral-light" />
-                ) : (
-                  <Bars3Icon className="h-6 w-6 text-neutral-dark dark:text-neutral-light" />
-                )}
-              </Button>
-            </div>
+            {/* Su mobile, potremmo mostrare un'icona utente semplice se loggato,
+                oppure nulla dato che "Profilo" e "Login" sono nella BottomNav.
+                Per ora, manteniamo semplice e non aggiungiamo altre icone qui per mobile.
+                L'importante è che il burger menu e la nav mobile dropdown siano rimossi.
+            */}
+
           </div>
         </div>
       </div>
-
-      {/* Menu Mobile */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-white dark:bg-neutral-dark border-t border-neutral-light dark:border-neutral-dark/50"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navLinks.map((link) => (
-                <NavItem key={link.path} path={link.path} label={link.label} onClick={() => setIsMobileMenuOpen(false)} />
-              ))}
-              {isAuthenticated && authenticatedLinks.map((link) => (
-                <NavItem key={link.path} path={link.path} label={link.label} onClick={() => setIsMobileMenuOpen(false)} />
-              ))}
-              {isAuthenticated ? (
-                <Button fullWidth variant="outline" size="sm" onClick={handleLogout} className="mt-2">
-                  Logout
-                </Button>
-              ) : (
-                 <Button as={Link} to="/login" fullWidth variant="primary" size="sm" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
-                  Login / Registrati
-                </Button>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* NESSUN MENU MOBILE DROPDOWN QUI */}
     </header>
   );
 };

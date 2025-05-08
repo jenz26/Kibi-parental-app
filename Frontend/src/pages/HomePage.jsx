@@ -1,8 +1,10 @@
+// src/pages/HomePage.jsx
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button'; // Assicurati che Button sia importato
 import { motion } from 'framer-motion';
 import HeroBg from '../assets/images/hero-bg.webp';
-import { ArrowRightIcon, BookOpenIcon, UsersIcon, LightBulbIcon } from '@heroicons/react/24/outline';
+// Importa le icone necessarie, inclusa quella nuova
+import { ArrowRightIcon, BookOpenIcon, UsersIcon, LightBulbIcon, PresentationChartLineIcon } from '@heroicons/react/24/outline';
 import ArticleCard from '../components/common/ArticleCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -40,6 +42,7 @@ const HomePage = () => {
 
   return (
     <div className="bg-background-light dark:bg-background-dark">
+      {/* Sezione Hero */}
       <motion.section
         className="relative bg-cover bg-center text-white py-20 md:py-32"
         style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${HeroBg})` }}
@@ -63,7 +66,7 @@ const HomePage = () => {
             animate="visible"
             transition={{ delay: 0.2 }}
           >
-            Kibi è qui per accompagnarti in ogni passo, dalla gravidanza ai primi anni del tuo bambino, con consigli, risorse e una comunità di supporto.
+            Kibi è qui per accompagnarti in ogni passo, dalla gravidanza ai primi anni del tuo bambino, con consigli, risorse e supporto personalizzato. {/* Modificato leggermente qui */}
           </motion.p>
           <motion.div
             variants={fadeIn}
@@ -79,7 +82,6 @@ const HomePage = () => {
               size="lg"
               className="!px-8 !py-3.5 w-full sm:w-auto"
               iconRight={<ArrowRightIcon className="w-5 h-5 ml-2" />}
-              // whileHover e whileTap rimosse da qui, gestite internamente da Button se non è un Link
             >
               Inizia Ora Gratuitamente
             </Button>
@@ -96,6 +98,7 @@ const HomePage = () => {
         </div>
       </motion.section>
 
+      {/* Sezione "Cosa Troverai su Kibi" */}
       <section className="py-16 md:py-24 bg-neutral-light/30 dark:bg-neutral-dark/30">
         <div className="main-container">
           <motion.h2
@@ -112,23 +115,26 @@ const HomePage = () => {
           </motion.p>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={staggerContainer} // Applica stagger al contenitore
+            variants={staggerContainer}
             initial="hidden"
-            whileInView="visible" // Animazione quando entra nel viewport
-            viewport={{ once: true }} // Anima solo una volta
+            whileInView="visible"
+            viewport={{ once: true }}
           >
+            {/* Card Articoli Informativi */}
             <FeatureCard
               icon={<BookOpenIcon className="w-10 h-10 text-primary dark:text-primary-light mb-4" />}
               title="Articoli Informativi"
               description="Guide complete su sonno, alimentazione, sviluppo e tanto altro, scritte da esperti."
-              itemVariants={fadeIn} // Passa la variante per il singolo item
-            />
-            <FeatureCard
-              icon={<UsersIcon className="w-10 h-10 text-secondary dark:text-secondary-light mb-4" />}
-              title="Comunità di Supporto"
-              description="Connettiti con altri genitori, condividi esperienze e trova supporto. (Prossimamente)"
               itemVariants={fadeIn}
             />
+            {/* Card Monitoraggio Progressi (SOSTITUITA) */}
+            <FeatureCard
+              icon={<PresentationChartLineIcon className="w-10 h-10 text-green-500 dark:text-green-400 mb-4" />} // Nuova icona e colore
+              title="Monitora i Tuoi Progressi" // Nuovo titolo
+              description="Visualizza gli aggiornamenti settimanali (o mensili) sullo sviluppo del tuo bambino, le tappe fondamentali e cosa aspettarti in ogni fase." // Nuova descrizione
+              itemVariants={fadeIn}
+            />
+            {/* Card Consigli Personalizzati */}
             <FeatureCard
               icon={<LightBulbIcon className="w-10 h-10 text-yellow-500 mb-4" />}
               title="Consigli Personalizzati"
@@ -139,6 +145,7 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Sezione Ultimi Articoli */}
       <section className="py-16 md:py-24">
         <div className="main-container">
           <motion.h2
@@ -162,7 +169,7 @@ const HomePage = () => {
               viewport={{ once: true }}
             >
               {featuredArticles.map((article) => (
-                <motion.div key={article.id} variants={fadeIn}> {/* Usa fadeIn qui per ogni card */}
+                <motion.div key={article.id} variants={fadeIn}>
                     <ArticleCard article={article} />
                 </motion.div>
               ))}
@@ -181,6 +188,7 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Sezione CTA (Call to Action) */}
       <section className="py-16 md:py-24 bg-primary dark:bg-primary-dark text-white">
         <div className="main-container text-center">
           <motion.h2
@@ -208,12 +216,11 @@ const HomePage = () => {
   );
 };
 
-// FeatureCard ora accetta itemVariants
+// Componente FeatureCard (rimane invariato nella sua definizione)
 const FeatureCard = ({ icon, title, description, itemVariants }) => (
   <motion.div
     className="bg-white dark:bg-neutral-dark p-8 rounded-lg shadow-lg text-center"
     variants={itemVariants} // Usa la prop passata per le varianti del singolo item
-    // initial, animate, viewport sono gestiti dal contenitore <motion.div> con staggerChildren
   >
     {icon}
     <h3 className="text-xl font-semibold text-neutral-dark dark:text-neutral-light mb-3">{title}</h3>

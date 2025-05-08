@@ -31,11 +31,12 @@
           "giochi",
           "svezzamento",
           "allattamento",
-          "sicurezza_bambino"
+          "sicurezza_bambino",
+          "viaggi_famiglia"
         ],
         "preferredLanguage": "it",
-        "childName": "Aurora",
-        "childBirthDate": "2024-10-04"
+        "childName": "",
+        "childBirthDate": null
       }
     },
     {
@@ -68,6 +69,26 @@
           "post_partum"
         ],
         "preferredLanguage": "en",
+        "childName": "Aurora",
+        "childBirthDate": null
+      }
+    },
+    {
+      "name": "Angela",
+      "email": "angela@esempio.it",
+      "password": "Ciaooo",
+      "role": "user",
+      "id": "1746699809652",
+      "profile": {
+        "parentName": "Angela",
+        "dueDate": "2025-11-10",
+        "interests": [
+          "salute_benessere",
+          "cura_neonato",
+          "post_partum",
+          "viaggi_famiglia"
+        ],
+        "preferredLanguage": "it",
         "childName": "Aurora",
         "childBirthDate": null
       }
