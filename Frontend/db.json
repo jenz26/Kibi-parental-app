@@ -26,17 +26,16 @@
       "role": "user",
       "profile": {
         "parentName": "Marco",
-        "dueDate": "2025-10-10",
+        "dueDate": null,
         "interests": [
-          "sonno",
           "giochi",
           "svezzamento",
-          "relazione_coppia",
-          "post_partum"
+          "allattamento",
+          "sicurezza_bambino"
         ],
         "preferredLanguage": "it",
         "childName": "Aurora",
-        "childBirthDate": null
+        "childBirthDate": "2024-10-04"
       }
     },
     {
@@ -55,6 +54,23 @@
         "childName": "Leo",
         "childBirthDate": "2023-05-20"
       }
+    },
+    {
+      "name": "Marco",
+      "email": "marco@esempio.it",
+      "password": "password",
+      "role": "user",
+      "id": "1746688980783",
+      "profile": {
+        "parentName": "Marco",
+        "dueDate": "2025-11-10",
+        "interests": [
+          "post_partum"
+        ],
+        "preferredLanguage": "en",
+        "childName": "Aurora",
+        "childBirthDate": null
+      }
     }
   ],
   "articles": [
@@ -67,7 +83,7 @@
       "category": "Sonno",
       "content": "Capire i pattern di sonno del tuo neonato è fondamentale. Questo articolo esplora le diverse fasi del sonno, come creare una routine e risolvere i problemi comuni...",
       "summary": "Una guida essenziale per aiutare i neo genitori a navigare le sfide del sonno del neonato.",
-      "imageUrl": "https://via.placeholder.com/800x400.png?text=Sonno+Neonato",
+      "imageUrl": "/images/blog/il-sonno-del-neonato-guida-completa.webp",
       "publishedAt": "2024-03-10T10:00:00Z",
       "tags": [
         "neonato",
@@ -84,7 +100,7 @@
       "category": "Alimentazione",
       "content": "Lo svezzamento è una tappa importante. Scopri i segnali che indicano che il tuo bambino è pronto, quali cibi offrire e come rendere questa transizione serena e sicura...",
       "summary": "Consigli pratici e linee guida per iniziare lo svezzamento del tuo bambino con successo.",
-      "imageUrl": "https://via.placeholder.com/800x400.png?text=Svezzamento",
+      "imageUrl": "/images/blog/svezzamento-quando-e-come-iniziare.webp",
       "publishedAt": "2024-03-15T14:30:00Z",
       "tags": [
         "svezzamento",
@@ -101,7 +117,7 @@
       "category": "Sviluppo",
       "content": "Il gioco è il lavoro del bambino. Esploriamo i tipi di giochi adatti per ogni fase di crescita nei primi mesi e come questi supportano lo sviluppo cognitivo e motorio...",
       "summary": "Idee e suggerimenti per giochi educativi che favoriscono la crescita e l'apprendimento del tuo bambino.",
-      "imageUrl": "https://via.placeholder.com/800x400.png?text=Giochi+Bambino",
+      "imageUrl": "/images/blog/primi-giochi-stimolare-sviluppo.webp",
       "publishedAt": "2024-03-20T09:00:00Z",
       "tags": [
         "giochi",
@@ -119,7 +135,7 @@
       "category": "Benessere",
       "content": "Il massaggio neonatale non solo rilassa il bambino, ma rafforza anche il legame genitore-figlio. Impara le tecniche base e scopri tutti i benefici di questa pratica amorevole...",
       "summary": "Una guida passo-passo al massaggio neonatale per promuovere benessere e connessione.",
-      "imageUrl": "https://via.placeholder.com/800x400.png?text=Massaggio+Neonatale",
+      "imageUrl": "/images/blog/massaggio-neonatale-benefici-tecniche.webp",
       "publishedAt": "2024-03-25T16:00:00Z",
       "tags": [
         "massaggio",
@@ -137,7 +153,7 @@
       "category": "Viaggi",
       "content": "Viaggiare con un neonato può sembrare una sfida, ma con la giusta preparazione può diventare un'esperienza meravigliosa. Dalla preparazione della valigia alla gestione del jet lag, ecco i nostri consigli...",
       "summary": "Tutto ciò che devi sapere per affrontare viaggi sereni e divertenti con il tuo piccolo.",
-      "imageUrl": "https://via.placeholder.com/800x400.png?text=Viaggiare+con+Bambini",
+      "imageUrl": "/images/blog/viaggiare-con-neonati-consigli-utili.webp",
       "publishedAt": "2024-04-01T11:00:00Z",
       "tags": [
         "viaggi",

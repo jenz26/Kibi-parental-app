@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon, UserCircleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logout } from '../../features/auth/authSlice';
-import KibiLogo from '../../assets/images/kibi-logo.png'; // Assicurati che il path sia corretto
+import KibiLogo from '../../assets/images/kibi-logo.webp'; // Assicurati che il path sia corretto
 import Button from './Button';
 import { useDarkMode } from '../../hooks/useDarkMode'; // Importa l'hook
 

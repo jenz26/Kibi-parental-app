@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import KibiLogo from '../../assets/images/kibi-logo.png'; // Assicurati che il path sia corretto
+import KibiLogo from '../../assets/images/kibi-logo.webp'; // Assicurati che il path sia corretto
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -24,9 +24,9 @@ const Footer = () => {
             <h5 className="font-semibold mb-3 text-lg">Link Utili</h5>
             <ul className="space-y-2 text-sm">
               <li><Link to="/blog" className="hover:text-primary dark:hover:text-primary-light transition-colors">Blog</Link></li>
-              <li><Link to="/faq" className="hover:text-primary dark:hover:text-primary-light transition-colors">FAQ (Placeholder)</Link></li>
-              <li><Link to="/about" className="hover:text-primary dark:hover:text-primary-light transition-colors">Chi Siamo (Placeholder)</Link></li>
-              <li><Link to="/contact" className="hover:text-primary dark:hover:text-primary-light transition-colors">Contatti (Placeholder)</Link></li>
+              <li><Link to="/faq" className="hover:text-primary dark:hover:text-primary-light transition-colors">FAQ</Link></li> {/* OK */}
+              <li><Link to="/about" className="hover:text-primary dark:hover:text-primary-light transition-colors">Chi Siamo</Link></li> {/* OK */}
+              <li><Link to="/contact" className="hover:text-primary dark:hover:text-primary-light transition-colors">Contatti</Link></li> {/* OK */}
             </ul>
           </div>
 
@@ -52,8 +52,8 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-neutral-default/20 dark:border-neutral-dark/50 text-center text-sm text-neutral-default dark:text-gray-400">
           <p>© {currentYear} {import.meta.env.VITE_APP_NAME || "Kibi"}. Tutti i diritti riservati.</p>
           <p className="mt-1">
-            <Link to="/privacy" className="hover:text-primary dark:hover:text-primary-light transition-colors">Privacy Policy (Placeholder)</Link> |
-            <Link to="/terms" className="hover:text-primary dark:hover:text-primary-light transition-colors ml-1">Termini di Servizio (Placeholder)</Link>
+            <Link to="/privacy" className="hover:text-primary dark:hover:text-primary-light transition-colors">Privacy Policy</Link> |
+            <Link to="/terms" className="hover:text-primary dark:hover:text-primary-light transition-colors ml-1">Termini di Servizio</Link>
           </p>
         </div>
       </div>

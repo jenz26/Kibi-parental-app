@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button'; // Assicurati che Button sia importato
 import { motion } from 'framer-motion';
-import HeroBg from '../assets/images/hero-bg.jpg';
+import HeroBg from '../assets/images/hero-bg.webp';
 import { ArrowRightIcon, BookOpenIcon, UsersIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 import ArticleCard from '../components/common/ArticleCard';
 import { useSelector, useDispatch } from 'react-redux';

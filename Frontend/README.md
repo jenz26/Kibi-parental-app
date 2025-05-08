@@ -1,12 +1,108 @@
-# React + Vite
+Kibi – Primi Passi da Genitore
+Una piattaforma React dedicata a supportare i neogenitori nel viaggio della genitorialità, offrendo articoli, risorse personalizzate, consigli e una community in crescita.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tecnologie Utilizzate
 
-Currently, two official plugins are available:
+React 18 + Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Redux Toolkit + Redux Thunk
 
-## Expanding the ESLint configuration
+React Router v6
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+json-server
+
+TailwindCSS
+
+Framer Motion
+
+Yup + React Hook Form
+
+Axios
+
+Struttura del Progetto
+Organizzazione modularizzata secondo la Feature-Based Architecture:
+
+src/
+
+api/ → Gestione chiamate API
+
+app/ → Redux store
+
+assets/ → Immagini e risorse
+
+components/ → UI riutilizzabili
+
+constants/ → Costanti globali
+
+data/ → Dati fissi
+
+features/ → auth, admin, blog, profilo
+
+hooks/ → Custom hook
+
+pages/ → Pagine pubbliche
+
+routes/ → Routing centrale
+
+schemas/ → Validazione Yup
+
+main.jsx → Entry point
+
+
+Autenticazione & Ruoli
+
+Login simulato via json-server
+
+Rotte protette con <ProtectedRoute />
+
+Ruoli supportati: user e admin
+
+
+Funzionalità Implementate
+
+Almeno 6 pagine (Home, Blog, Profilo, ecc.)
+
+Rotta dinamica: /blog/:id
+
+Login + Registrazione
+
+Stepper Profilo in 3 step
+
+Filtri Blog
+
+Form CRUD articoli (admin)
+
+Stato globale con Redux + fetch asincrono
+
+📐 Best Practices Implementate
+✔ Feature-based structure – organizzazione scalabile
+✔ Redux Toolkit – meno boilerplate, maggiore leggibilità
+✔ Thunk middleware – async logic elegante
+✔ Componenti riutilizzabili – UI consistente
+✔ Validazione con Yup – sicurezza e modularità nei form
+✔ Routing protetto – sicurezza e UX migliorata
+✔ Tailwind + Framer Motion – UI moderna e animata
+✔ Naming chiaro – leggibilità elevata
+
+▶️ Come Avviare il Progetto
+
+npm install
+
+npm run server → json-server su http://localhost:3001
+
+npm run dev → Vite su http://localhost:3000
+
+🔮 Estensioni Future
+
+Autenticazione reale con Firebase/Auth0
+
+Modalità scura persistente
+
+Notifiche push intelligenti
+
+Area community/forum
+
+🧠 Autore
+Marco Contin
+Corso Front-end Programming – A.A. 2024/2025
+Epicode

@@ -12,10 +12,16 @@ import AdminDashboardPage from '../features/admin/pages/AdminDashboardPage';
 import ArticleManagement from '../features/admin/components/ArticleManagement';
 import UserManagement from '../features/admin/components/UserManagement';
 import NotFoundPage from '../pages/NotFoundPage';
+// Importa le nuove pagine
+import PrivacyPolicyPage from '../pages/PrivacyPolicyPage';
+import TermsOfServicePage from '../pages/TermsOfServicePage';
+import FaqPage from '../pages/FaqPage';
+import AboutPage from '../pages/AboutPage';
+import ContactPage from '../pages/ContactPage';
 
 import ProtectedRoute from '../components/common/ProtectedRoute';
 import { useAuth } from '../hooks/useAuth';
-import LoadingSpinner from '../components/common/LoadingSpinner'; // Per GuestRoute
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 
 const GuestRoute = ({ children }) => {
@@ -62,8 +68,13 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      // Aggiungi qui eventuali altre pagine pubbliche o protette semplici
-      // es. { path: 'faq', element: <FaqPage /> },
+      // Aggiungi le route per le nuove pagine qui
+      { path: 'privacy', element: <PrivacyPolicyPage /> },
+      { path: 'terms', element: <TermsOfServicePage /> },
+      { path: 'faq', element: <FaqPage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'contact', element: <ContactPage /> },
+      // Lascia il catch-all alla fine
       { path: '*', element: <NotFoundPage /> }
     ],
   },
@@ -74,12 +85,11 @@ const router = createBrowserRouter([
         <AdminLayout />
       </ProtectedRoute>
     ),
-    // errorElement: <NotFoundPage />, // Potrebbe essere utile per errori specifici dell'admin layout
     children: [
       { index: true, element: <AdminDashboardPage /> },
       { path: 'articles', element: <ArticleManagement /> },
       { path: 'users', element: <UserManagement /> },
-      { path: '*', element: <Navigate to="/admin" replace /> } // Catch-all per /admin/* non validi
+      { path: '*', element: <Navigate to="/admin" replace /> }
     ],
   },
 ]);

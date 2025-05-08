@@ -4,7 +4,7 @@ import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
 import { clearError } from '../authSlice';
 import { motion, AnimatePresence } from 'framer-motion';
-import KibiLogo from '../../../assets/images/kibi-logo.png';
+import KibiLogo from '../../../assets/images/kibi-logo.webp';
 
 const AuthPage = () => {
   const [isLoginView, setIsLoginView] = useState(true);

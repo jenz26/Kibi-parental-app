@@ -2,7 +2,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Cog6ToothIcon, DocumentTextIcon, UsersIcon, HomeIcon } from '@heroicons/react/24/outline';
 import AdminNavItem from '../common/AdminNavItem';
-import KibiLogo from '../../assets/images/kibi-logo.png';
+import KibiLogo from '../../assets/images/kibi-logo.webp';
 
 const AdminLayout = () => {
   const { user } = useSelector((state) => state.auth);
