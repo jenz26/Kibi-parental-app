@@ -1,0 +1,10 @@
+# public/robots.txt
+
+User-agent: *
+Allow: /
+
+# Se vuoi disabilitare l'indicizzazione dell'admin panel (opzionale):
+# Disallow: /admin/
+
+# Se avrai una sitemap in futuro (opzionale per ora):
+# Sitemap: https://www.tuosito.com/sitemap.xml 

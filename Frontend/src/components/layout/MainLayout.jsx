@@ -3,10 +3,12 @@ import { Outlet } from 'react-router-dom';
 import Header from '../common/Header'; // Il tuo Header.jsx
 import Footer from '../common/Footer';
 import BottomNavigation from '../common/BottomNavigation'; // O il path corretto se l'hai messo altrove
+import ScrollToTop from '../common/ScrollToTop';
 
 const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background-light dark:bg-background-dark">
+      <ScrollToTop />
       <Header />
       {/* Rimosso pt-16 da <main>. L'header sticky "fluttuerà" sopra il contenuto.
           Le singole pagine dovranno gestire il proprio padding-top se necessario.

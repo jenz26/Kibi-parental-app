@@ -1,7 +1,9 @@
+// --- START OF FILE ProfileFormStepper.jsx ---
 import { useState, useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; // <<<<<<<<<< IMPORTA useNavigate
 import { fetchProfile, updateProfile } from '../profileSlice';
 import { updateAuthUser } from '../../auth/authSlice';
 
@@ -17,11 +19,12 @@ import toast from 'react-hot-toast';
 
 const ProfileFormStepper = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // <<<<<<<<<< USA useNavigate
   const { user: authUser } = useSelector((state) => state.auth);
   const { profileData, isLoading: profileLoading, error: profileError } = useSelector((state) => state.profile);
 
   const [currentStep, setCurrentStep] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false); // Stato di loading per il submit
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const schemas = [profileStep1Schema, profileStep2Schema, profileStep3Schema];
   const currentSchema = schemas[currentStep];
@@ -50,12 +53,12 @@ const ProfileFormStepper = () => {
       methods.reset({
         parentName: profileData.parentName || authUser?.name || '',
         childName: profileData.childName || '',
-        dueDate: profileData.dueDate ? profileData.dueDate.split('T')[0] : '', // Formato YYYY-MM-DD per input date
-        childBirthDate: profileData.childBirthDate ? profileData.childBirthDate.split('T')[0] : '', // Formato YYYY-MM-DD
+        dueDate: profileData.dueDate ? profileData.dueDate.split('T')[0] : '',
+        childBirthDate: profileData.childBirthDate ? profileData.childBirthDate.split('T')[0] : '',
         interests: Array.isArray(profileData.interests) ? profileData.interests : [],
         preferredLanguage: profileData.preferredLanguage || 'it',
       });
-    } else if (authUser && !profileData) { // Se non c'è profilo, usa nome authUser
+    } else if (authUser && !profileData) {
         methods.reset({
             parentName: authUser.name || '',
             childName: '',
@@ -74,10 +77,12 @@ const ProfileFormStepper = () => {
       if (currentStep < PROFILE_STEPPER_STEPS.length - 1) {
         setCurrentStep(currentStep + 1);
       } else {
+        // Non chiamare handleSubmitForm direttamente qui se il bottone è di tipo "submit"
+        // ma se il bottone "Salva Profilo" è di tipo "button", allora va bene.
+        // Dal tuo codice, il bottone è type="button" e chiama handleNext, quindi questo è corretto.
         handleSubmitForm(methods.getValues());
       }
     } else {
-        // Trova il primo errore e scrolla al campo se possibile
         const firstErrorField = Object.keys(methods.formState.errors)[0];
         if (firstErrorField) {
             const fieldElement = document.getElementsByName(firstErrorField)[0];
@@ -109,11 +114,14 @@ const ProfileFormStepper = () => {
       await dispatch(updateProfile({ userId: authUser.id, profileData: cleanFormData })).unwrap();
 
       if (formData.parentName && formData.parentName !== authUser.name) {
-        dispatch(updateAuthUser({ name: formData.parentName }));
+        // dispatch(updateAuthUser({ name: formData.parentName })); // Rimosso per evitare doppio aggiornamento se fetchProfile già aggiorna lo store auth
       }
       toast.success('Profilo aggiornato con successo!');
+      navigate('/dashboard'); // <<<<<<<<<< REINDIRIZZA ALLA DASHBOARD
     } catch (err) {
-      toast.error(err.message || 'Errore durante l\'aggiornamento del profilo.');
+      // Se l'errore è un oggetto con un campo 'message', usa quello, altrimenti una stringa generica
+      const errorMessage = typeof err === 'object' && err !== null && err.message ? err.message : 'Errore durante l\'aggiornamento del profilo.';
+      toast.error(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -128,18 +136,27 @@ const ProfileFormStepper = () => {
     }
   };
 
-  // Mostra spinner durante il caricamento iniziale del profilo
   if (profileLoading && !profileData) {
     return <div className="flex justify-center py-10"><LoadingSpinner size="lg" /></div>;
   }
-  // Mostra errore se il caricamento iniziale fallisce
-  if (profileError && !profileData && !profileLoading) { // Aggiunto !profileLoading per evitare flash
-    return <p className="text-red-500 text-center py-10">Errore nel caricamento del profilo: {profileError}</p>;
+
+  // Modifica per mostrare l'errore come stringa
+  const profileErrorString = typeof profileError === 'object' && profileError !== null && profileError.message 
+    ? profileError.message
+    : (typeof profileError === 'string' ? profileError : "Errore sconosciuto");
+  if (profileError && !profileData && !profileLoading) {
+    return <p className="text-red-500 text-center py-10">Errore nel caricamento del profilo: {profileErrorString}</p>;
   }
 
 
   return (
     <FormProvider {...methods}>
+      {/* 
+        Se il bottone "Salva Profilo" fosse di tipo "submit", non servirebbe chiamare 
+        handleSubmitForm in handleNext. Ma dato che è type="button", l'approccio corrente va bene.
+        Oppure, il form può avere il suo `onSubmit` e il bottone finale essere `type="submit"`.
+        Per ora, lasciamo com'è dato che funziona.
+      */}
       <form onSubmit={methods.handleSubmit(handleSubmitForm)} className="space-y-8 p-4 sm:p-6 bg-white dark:bg-neutral-dark shadow-xl rounded-lg">
         <Stepper steps={PROFILE_STEPPER_STEPS} currentStep={currentStep} />
 
@@ -157,10 +174,10 @@ const ProfileFormStepper = () => {
             Precedente
           </Button>
           <Button
-            type="button"
+            type="button" // Mantenuto come button, handleNext gestisce il submit finale
             onClick={handleNext}
             isLoading={isSubmitting}
-            disabled={isSubmitting || profileLoading} // Disabilita anche se il profilo sta caricando
+            disabled={isSubmitting || profileLoading}
             variant="primary"
           >
             {currentStep === PROFILE_STEPPER_STEPS.length - 1 ? 'Salva Profilo' : 'Successivo'}
@@ -172,3 +189,4 @@ const ProfileFormStepper = () => {
 };
 
 export default ProfileFormStepper;
+// --- END OF FILE ProfileFormStepper.jsx ---

@@ -1,6 +1,6 @@
 import axiosInstance from './axiosInstance';
 
-// Simula la generazione di un token JWT. In un backend reale, questo sarebbe gestito dal server.
+// Simula la generazione di un token JWT.
 const generateFakeJwt = (user) => {
   const header = { alg: "HS256", typ: "JWT" };
   const payload = { sub: user.id, email: user.email, role: user.role, name: user.name, exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24) }; // Scade in 24 ore

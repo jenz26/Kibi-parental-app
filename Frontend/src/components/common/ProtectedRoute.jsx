@@ -1,13 +1,14 @@
 import { Navigate, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import LoadingSpinner from './LoadingSpinner';
+import { useAuth } from '../../hooks/useAuth'; // Importa il custom hook aggiornato
+import LoadingSpinner from './LoadingSpinner'; // Assicurati che il path sia corretto
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const { isAuthenticated, user, isLoading } = useSelector((state) => state.auth);
+  // Usa il custom hook per ottenere lo stato di autenticazione
+  const { isAuthenticated, user, isInitialLoading } = useAuth(); 
   const location = useLocation();
 
-  if (isLoading) {
-    // Mostra uno spinner di caricamento mentre lo stato di autenticazione viene verificato
+  // Mostra lo spinner SOLO durante il controllo iniziale del token all'avvio dell'app
+  if (isInitialLoading) { 
     return (
       <div className="flex justify-center items-center h-screen">
         <LoadingSpinner size="lg" />
@@ -15,20 +16,18 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
     );
   }
 
+  // Se il caricamento iniziale è finito e l'utente NON è autenticato, reindirizza al login
   if (!isAuthenticated) {
-    // Se non autenticato, reindirizza alla pagina di login
-    // Salva la posizione corrente per reindirizzare l'utente dopo il login
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
+  // Se la route richiede ruoli specifici e l'utente non li ha, reindirizza
   if (allowedRoles && !allowedRoles.includes(user?.role)) {
-    // Se l'utente è autenticato ma non ha il ruolo richiesto,
-    // reindirizza a una pagina di "non autorizzato" o alla dashboard
-    // Per semplicità, reindirizziamo alla dashboard
-    return <Navigate to="/dashboard" replace />;
+    // Reindirizza alla dashboard o idealmente a una pagina /unauthorized
+    return <Navigate to="/dashboard" replace />; 
   }
 
-  // Se l'utente è autenticato e (se specificato) ha il ruolo corretto, mostra il contenuto
+  // Se autenticato e con i ruoli corretti (o se non sono richiesti ruoli), mostra il componente figlio
   return children;
 };
 

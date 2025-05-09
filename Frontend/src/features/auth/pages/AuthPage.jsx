@@ -1,45 +1,54 @@
-// src/features/auth/pages/AuthPage.jsx
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import LoginForm from '../components/LoginForm'; // Assicurati che questi path siano corretti
 import RegisterForm from '../components/RegisterForm'; // Assicurati che questi path siano corretti
 import { clearError } from '../authSlice'; // Assicurati che authSlice e clearError esistano e siano corretti
 import { motion, AnimatePresence } from 'framer-motion';
-// KibiLogo non è più necessario qui, perché AuthLayout lo mostra già in una posizione più prominente.
+// KibiLogo non è più necessario qui, perché AuthLayout lo mostra già
 
-const AuthPage = () => {
-  // La prop 'mode' non è più necessaria se gestiamo il toggle internamente.
-  // Ma se vuoi ancora che l'URL /login o /register imposti lo stato iniziale, puoi ripristinarla.
-  // Per ora, assumiamo che parta sempre con Login.
-  const [isLoginView, setIsLoginView] = useState(true);
+// Riceve 'login' o 'register' dal router per impostare la vista iniziale
+const AuthPage = ({ initialView = 'login' }) => { 
+  const [isLoginView, setIsLoginView] = useState(initialView === 'login');
   const dispatch = useDispatch();
-  const { error, isLoading } = useSelector((state) => state.auth); // Aggiunto isLoading per feedback
+  // Leggiamo l'errore e isLoading dallo stato Redux di auth
+  const { error, isLoading } = useSelector((state) => state.auth);
 
   useEffect(() => {
+    // Pulisce l'errore quando la vista (login/register) cambia o il componente si monta
+    // Così l'errore del login non persiste se passo a registrazione, e viceversa.
     dispatch(clearError());
   }, [dispatch, isLoginView]);
 
+  // Funzione per cambiare tra vista Login e Registrazione
   const toggleView = (e) => {
-    e.preventDefault(); // Previene il comportamento di default se il button fosse in un form
+    e.preventDefault(); // Previene submit accidentali se il bottone è in un form
     setIsLoginView(!isLoginView);
   };
 
+  // Varianti per l'animazione slide e fade dei form
   const formVariants = {
-    hidden: { opacity: 0, x: isLoginView ? -50 : 50 }, // Ridotta la distanza per un'animazione più sottile
-    visible: { opacity: 1, x: 0, transition: { type: 'spring', duration: 0.4, bounce: 0.3 } },
-    exit: { opacity: 0, x: isLoginView ? 50 : -50, transition: { duration: 0.2 } }
+    hidden: (isLogin) => ({ 
+      opacity: 0, 
+      x: isLogin ? -50 : 50, // Entra da sinistra per Login, da destra per Register
+      transition: { duration: 0.2 } 
+    }),
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      transition: { type: 'spring', duration: 0.4, bounce: 0.3 } 
+    },
+    exit: (isLogin) => ({ 
+      opacity: 0, 
+      x: isLogin ? 50 : -50, // Esce a destra per Login, a sinistra per Register
+      transition: { duration: 0.2 } 
+    })
   };
 
   return (
-    // Questo div è la "card" che AuthLayout centrerà.
-    // Rimuoviamo min-h-screen, flex, items-center, justify-center, bg-neutral-light, py-12, px-4 ecc.
-    // perché AuthLayout se ne occupa.
-    <div className="w-full space-y-6 p-6 sm:p-8 bg-white dark:bg-neutral-dark shadow-xl rounded-lg">
+    // Questa è la "card" bianca che viene centrata da AuthLayout.jsx
+    <div className="w-full space-y-5 p-6 sm:p-8 bg-white dark:bg-neutral-dark shadow-xl rounded-lg">
+      {/* Sezione Titolo e Link Toggle */}
       <div>
-        {/* Il logo principale è ora in AuthLayout. Possiamo omettere il logo qui
-             o mettere una versione più piccola se lo desideri, ma potrebbe essere ridondante.
-             Per ora lo ometto per pulizia. */}
-        {/* <img className="mx-auto h-12 w-auto" src={KibiLogo} alt="Kibi Logo" /> */}
         <h2 className="mt-1 text-center text-2xl sm:text-3xl font-bold tracking-tight text-neutral-dark dark:text-neutral-light">
           {isLoginView ? 'Accedi al tuo account' : 'Crea un nuovo account'}
         </h2>
@@ -47,51 +56,54 @@ const AuthPage = () => {
           {isLoginView ? 'Non hai un account? ' : 'Hai già un account? '}
           <button
             onClick={toggleView}
-            type="button" // Importante per evitare submit se dentro un form per errore
+            type="button"
             className="font-medium text-primary hover:underline dark:text-primary-light focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+            aria-live="polite" // Annuncia il cambio ai lettori schermo
           >
             {isLoginView ? 'Creane uno gratuitamente' : 'Accedi qui'}
           </button>
         </p>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-            key={isLoginView ? 'login' : 'register'}
-            variants={formVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="overflow-hidden" // Aggiunto per contenere meglio le animazioni x
-        >
-            {isLoginView ? <LoginForm switchToRegister={toggleView} /> : <RegisterForm switchToLogin={toggleView} />}
-            {/* Passiamo la funzione toggleView ai componenti form se vuoi che il link "Crea account/Accedi"
-                all'interno dei form stessi usi la stessa logica di toggle di AuthPage.
-                Altrimenti, se LoginForm/RegisterForm usano <Link to="/register"> o <Link to="/login">,
-                allora la prop 'mode' inviata dal router a AuthPage diventerebbe di nuovo utile per
-                impostare lo stato iniziale di isLoginView.
-            */}
-        </motion.div>
-      </AnimatePresence>
+      {/* Sezione per mostrare l'Errore (se presente) */}
+      <div className="h-10"> {/* Spazio riservato per il messaggio di errore per evitare salti di layout */}
+        <AnimatePresence>
+          {error && (
+            <motion.div
+              key="auth-error"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="bg-red-100 border border-red-300 text-red-700 dark:bg-red-900/30 dark:border-red-700 dark:text-red-300 px-3 py-2 rounded-md text-sm text-center"
+              role="alert"
+            >
+              {typeof error === 'string' ? error : 'Si è verificato un errore.'}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
-      {/* Mostra un messaggio di errore globale per l'autenticazione, se presente */}
-      {/* Potrebbe essere più utile mostrare gli errori specifici dei field direttamente nei form */}
-      <AnimatePresence>
-        {error && (
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="mt-3 text-xs text-red-500 dark:text-red-400 text-center"
+      {/* Contenitore per i Form con animazione */}
+      <div className="relative overflow-hidden min-h-[280px] sm:min-h-[300px]"> {/* Altezza minima per contenere i form */}
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+              // La chiave cambia per far scattare l'animazione exit/enter
+              key={isLoginView ? 'loginForm' : 'registerForm'} 
+              custom={isLoginView} // Passa lo stato corrente alle varianti
+              variants={formVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="w-full" // Rimosso absolute per un layout più semplice
           >
-            {typeof error === 'string' ? error : 'Si è verificato un errore.'}
-          </motion.p>
-        )}
-      </AnimatePresence>
+              {isLoginView ? <LoginForm /> : <RegisterForm />}
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      {/* Feedback di caricamento, se lo gestisci qui */}
+      {/* Feedback di caricamento globale (mostrato sotto i form) */}
       {isLoading && (
-        <p className="mt-3 text-xs text-neutral-default dark:text-gray-400 text-center">
+        <p className="text-xs text-neutral-default dark:text-gray-400 text-center">
           Verifica in corso...
         </p>
       )}

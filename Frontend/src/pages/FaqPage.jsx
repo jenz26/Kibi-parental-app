@@ -1,10 +1,13 @@
+// --- START OF FILE src/pages/FaqPage.jsx ---
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom'; // Importa Link
+import { Link } from 'react-router-dom';
 
 const FaqItem = ({ question, answer }) => (
-  <div className="py-4 border-b border-neutral-light dark:border-neutral-dark/50 last:border-b-0">
+  <div className="py-5 border-b border-neutral-light dark:border-neutral-dark/50 last:border-b-0">
+    {/* Titoli delle FAQ non dovrebbero essere affetti da 'prose' se h3 è fuori dal div con 'prose' */}
     <h3 className="text-lg font-semibold text-neutral-dark dark:text-neutral-light mb-2">{question}</h3>
-    <div className="text-neutral-default dark:text-gray-300 space-y-2">{answer}</div>
+    {/* Applicare prose qui se answer contiene HTML complesso, altrimenti stilizzare manualmente */}
+    <div className="prose prose-sm dark:prose-invert max-w-none text-text-muted-light dark:text-text-muted-dark space-y-2">{answer}</div>
   </div>
 );
 
@@ -17,57 +20,60 @@ const FaqPage = () => {
         transition={{ duration: 0.5 }}
         className="max-w-3xl mx-auto"
       >
-        <h1 className="page-title mb-8">FAQ (Domande Frequenti)</h1>
+        <h1 className="page-title mb-6">FAQ (Domande Frequenti)</h1>
+        <p className="text-center text-text-muted-light dark:text-text-muted-dark mb-8 max-w-2xl mx-auto">
+          Trova risposte rapide alle domande più comuni su Kibi e sul suo funzionamento come progetto dimostrativo.
+        </p>
 
-        <div className="bg-white dark:bg-neutral-dark p-6 md:p-8 rounded-lg shadow-lg">
-          <p className="mb-6 text-neutral-default dark:text-gray-300">Benvenuto/a nella sezione FAQ di Kibi! Qui trovi le risposte alle domande più comuni sulla nostra applicazione demo.</p>
-
+        <div className="bg-white dark:bg-neutral-dark p-6 md:p-8 rounded-lg shadow-xl">
           <FaqItem
             question="Cos'è esattamente Kibi – Primi passi da genitore!?"
-            answer={<p>Kibi è un'applicazione web dimostrativa progettata per offrire supporto informativo ed educativo ai neo-genitori e ai futuri genitori. Il nostro obiettivo è fornire contenuti chiari, rassicuranti e utili per accompagnarti nelle prime fasi della genitorialità, attraverso articoli e una dashboard personalizzabile. Ricorda, è un progetto portfolio, quindi molte funzionalità sono simulate.</p>}
+            answer={<p>Kibi è un'applicazione web dimostrativa sviluppata come progetto d'esame, progettata per offrire supporto informativo ed educativo ai neo-genitori e ai futuri genitori. L'obiettivo è fornire contenuti chiari e utili attraverso articoli e una dashboard personalizzabile.</p>}
           />
           <FaqItem
             question="Kibi è un servizio a pagamento?"
-            answer={<p>No, Kibi è completamente gratuito. Essendo un'applicazione demo sviluppata per un contesto d'esame/portfolio, non ci sono costi associati al suo utilizzo.</p>}
+            answer={<p>No, Kibi è completamente gratuito. Essendo un'applicazione demo, non ci sono costi associati al suo utilizzo.</p>}
           />
            <FaqItem
-            question="Come vengono utilizzati i miei dati personali? È sicuro inserirli?"
-            answer={<p>La tua privacy è importante. Raccogliamo solo i dati necessari per la registrazione (nome, email) e per personalizzare la tua esperienza (nome bambino/a, date importanti, interessi). In questa versione demo, i dati sono salvati su un backend simulato (`db.json`) e usiamo il `localStorage` per l'autenticazione. **Non vendiamo né condividiamo i tuoi dati con terzi.** Per maggiori dettagli, consulta la nostra <Link to="/privacy" className="text-primary dark:text-primary-light hover:underline">Privacy Policy</Link>. Data la natura demo, ti consigliamo di non inserire dati reali estremamente sensibili.</p>}
+            question="Come vengono utilizzati i miei dati personali?"
+            answer={<p>Raccogliamo solo i dati per la registrazione (nome, email) e per personalizzare la tua esperienza (dati del profilo). In questa demo, i dati sono su un backend simulato (`db.json`) e usiamo il `localStorage` per l'autenticazione. Non vendiamo né condividiamo dati. Consulta la nostra <Link to="/privacy" className="text-primary dark:text-primary-light hover:underline">Privacy Policy</Link>. Consigliamo di non inserire dati reali sensibili.</p>}
           />
            <FaqItem
-            question="Quanto sono affidabili le informazioni presenti su Kibi? Posso considerarle un parere medico?"
-            answer={<p>Le informazioni su Kibi hanno uno **scopo puramente educativo e informativo**. Sono create per essere di supporto, ma **NON sostituiscono in alcun modo il parere di un medico, pediatra o altro professionista sanitario qualificato.** Per qualsiasi questione di salute, rivolgiti sempre a un esperto.</p>}
+            question="Le informazioni su Kibi possono sostituire un parere medico?"
+            answer={<p>Assolutamente no. Le informazioni su Kibi hanno scopo puramente educativo. **NON sostituiscono il parere di un medico o altro professionista sanitario qualificato.** Per questioni di salute, rivolgiti sempre a un esperto.</p>}
           />
            <FaqItem
             question="Come posso modificare le informazioni del mio profilo?"
-            answer={<p>Puoi easily aggiornare i tuoi dati (come nome, nome del bambino/a, date importanti e interessi) accedendo alla pagina <Link to="/profile" className="text-primary dark:text-primary-light hover:underline">Profilo</Link> una volta effettuato il login.</p>}
+            answer={<p>Puoi aggiornare i tuoi dati (nome, date, interessi) accedendo alla pagina <Link to="/profile" className="text-primary dark:text-primary-light hover:underline">Profilo</Link> dopo il login.</p>}
           />
           <FaqItem
             question="Come funziona la personalizzazione dei contenuti?"
-            answer={<p>La personalizzazione si basa sulle informazioni che fornisci nel tuo profilo, come la data presunta del parto o la data di nascita di tuo figlio/a, e gli interessi che selezioni (es. sonno, alimentazione, sviluppo). In base a questi dati, la Dashboard e la sezione Blog cercheranno di proporti gli articoli e i consigli più pertinenti per la tua specifica situazione. Questa funzionalità è simulata nella demo per illustrarne il potenziale.</p>}
+            answer={<p>La personalizzazione si basa sui dati del tuo profilo. In base a questi, la Dashboard e il Blog cercano di proporti contenuti pertinenti. Questa funzionalità è simulata nella demo.</p>}
           />
           <FaqItem
-            question="Ho dimenticato la mia password. Come posso resettarla?"
-            answer={<p>Attualmente, Kibi è un'applicazione demo e **la funzionalità di reset automatico della password non è implementata.** Essendo un progetto con backend simulato, la gestione delle password è semplificata. In un'applicazione reale, questa sarebbe una funzionalità prioritaria.</p>}
+            question="Ho dimenticato la password. Come posso resettarla?"
+            answer={<p>Attualmente, essendo una demo, la funzionalità di reset password non è implementata. In un'applicazione reale, sarebbe prioritaria.</p>}
           />
           <FaqItem
             question="Posso suggerire argomenti o funzionalità per Kibi?"
-            answer={<p>Assolutamente sì! Anche se Kibi è una demo, il feedback è prezioso. Puoi inviare i tuoi suggerimenti o idee tramite la nostra pagina <Link to="/contact" className="text-primary dark:text-primary-light hover:underline">Contatti</Link> o all'indirizzo `info@kibi.app-demo.it`.</p>}
+            answer={<p>Certamente! Il feedback è prezioso. Puoi inviare suggerimenti tramite la pagina <Link to="/contact" className="text-primary dark:text-primary-light hover:underline">Contatti</Link>.</p>}
           />
           <FaqItem
-            question="È prevista una community o un forum per confrontarsi con altri genitori?"
-            answer={<p>L'idea di una community è molto interessante e sarebbe una bellissima aggiunta per una versione futura e completa di Kibi. Per questa versione demo, tale funzionalità non è disponibile, ma è sicuramente qualcosa che considereremmo per uno sviluppo futuro.</p>}
+            question="È prevista una community o un forum?"
+            answer={<p>Una community sarebbe una bella aggiunta per una versione futura completa. Per questa demo, non è disponibile.</p>}
           />
           <FaqItem
             question="Come posso cancellare il mio account?"
-            answer={<p>Se desideri cancellare il tuo account e i dati associati da questa demo, puoi inviare una richiesta all'indirizzo email fittizio `privacy@kibi.app-demo.it`, come indicato nella nostra <Link to="/privacy" className="text-primary dark:text-primary-light hover:underline">Privacy Policy</Link>.</p>}
+            answer={<p>Puoi richiedere la cancellazione del tuo account (per questa demo) inviando un'email a `privacy@kibi.app-demo.it`, come indicato nella <Link to="/privacy" className="text-primary dark:text-primary-light hover:underline">Privacy Policy</Link>.</p>}
           />
           <FaqItem
-            question="Esiste un'app mobile di Kibi per smartphone o tablet?"
-            answer={<p>Al momento, Kibi è disponibile solo come applicazione web, accessibile tramite browser. Non esiste un'app mobile dedicata per iOS o Android, ma il sito è progettato per essere responsivo e quindi utilizzabile anche da dispositivi mobili.</p>}
+            question="Esiste un'app mobile di Kibi?"
+            answer={<p>Al momento, Kibi è un'applicazione web accessibile da browser. È progettata per essere responsiva, ma non esiste un'app mobile dedicata.</p>}
           />
 
-          <p className="mt-6 text-neutral-default dark:text-gray-300">Se hai altre domande, non esitare a <Link to="/contact" className="text-primary dark:text-primary-light hover:underline">contattarci</Link>!</p>
+          <p className="mt-8 text-center text-text-muted-light dark:text-text-muted-dark">
+            Non hai trovato la risposta che cercavi? <Link to="/contact" className="text-primary dark:text-primary-light hover:underline">Contattaci direttamente!</Link>
+          </p>
         </div>
       </motion.div>
     </div>
@@ -75,3 +81,4 @@ const FaqPage = () => {
 };
 
 export default FaqPage;
+// --- END OF FILE src/pages/FaqPage.jsx ---

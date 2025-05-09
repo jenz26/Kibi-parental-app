@@ -1,3 +1,4 @@
+// --- START OF FILE ProgressWidget.jsx ---
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -36,7 +37,7 @@ const ProgressWidget = ({
                 </div>
             ) : profileError ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
-                    <InformationCircleIcon className="w-10 h-10 text-yellow-300 mb-2" />
+                    <InformationCircleIcon className="w-10 h-10 text-yellow-300 mb-2" /> {/* text-yellow-300 su gradiente scuro dovrebbe essere OK */}
                     <p className="font-semibold">Errore Profilo</p>
                     <p className="text-sm opacity-90 mb-4">{errorMessage}</p>
                     <Button as={Link} to="/profile" variant="outline" size="sm" className="!text-white !border-white hover:!bg-white/20 self-center">
@@ -60,7 +61,7 @@ const ProgressWidget = ({
                         </div>
                     </div>
 
-                    <div className="space-y-3 text-sm overflow-y-auto pr-2 flex-grow">
+                    <div className="space-y-3 text-sm overflow-y-auto pr-2 flex-grow"> {/* Controllare testo con opacità dopo fix gradiente */}
                         {isPregnancy ? (
                             <>
                                 <div>
@@ -100,8 +101,8 @@ const ProgressWidget = ({
                                 </div>
                                 {progressData.alerts && progressData.alerts.length > 0 && (
                                     <div>
-                                        <h3 className="font-semibold text-yellow-300 mb-1">Da osservare:</h3>
-                                        <ul className="list-disc list-inside space-y-0.5 pl-2 text-yellow-100/90">
+                                        <h3 className="font-semibold text-yellow-300 mb-1">Da osservare:</h3> {/* text-yellow-300 */}
+                                        <ul className="list-disc list-inside space-y-0.5 pl-2 text-yellow-100/90"> {/* text-yellow-100/90 */}
                                             {progressData.alerts?.map((item, index) => <li key={`alert-${index}`}>{item}</li>)}
                                         </ul>
                                     </div>
@@ -116,7 +117,7 @@ const ProgressWidget = ({
                             </Link>
                         </div>
                     )}
-                </div> // Fine contenitore dati progresso
+                </div> 
             ) : (
                 <div className="flex flex-col items-center justify-center h-full text-center">
                     <InformationCircleIcon className="w-10 h-10 text-yellow-300 mb-2" />
@@ -138,3 +139,4 @@ const ProgressWidget = ({
 };
 
 export default ProgressWidget;
+// --- END OF FILE ProgressWidget.jsx ---

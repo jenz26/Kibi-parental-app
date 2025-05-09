@@ -8,35 +8,15 @@
       "role": "admin",
       "profile": {
         "parentName": "Admin Kibi",
-        "dueDate": "2024-12-25",
+        "dueDate": null,
         "interests": [
           "alimentazione",
-          "sviluppo neonatale"
+          "sviluppo neonatale",
+          "sonno"
         ],
         "preferredLanguage": "it",
         "childName": "Baby Admin",
-        "childBirthDate": null
-      }
-    },
-    {
-      "id": "2",
-      "name": "Mario Rossi",
-      "email": "mario.rossi@example.com",
-      "password": "password123",
-      "role": "user",
-      "profile": {
-        "parentName": "Marco",
-        "dueDate": null,
-        "interests": [
-          "giochi",
-          "svezzamento",
-          "allattamento",
-          "sicurezza_bambino",
-          "viaggi_famiglia"
-        ],
-        "preferredLanguage": "it",
-        "childName": "",
-        "childBirthDate": null
+        "childBirthDate": "2024-07-05"
       }
     },
     {
@@ -55,43 +35,6 @@
         "childName": "Leo",
         "childBirthDate": "2023-05-20"
       }
-    },
-    {
-      "name": "Marco",
-      "email": "marco@esempio.it",
-      "password": "password",
-      "role": "user",
-      "id": "1746688980783",
-      "profile": {
-        "parentName": "Marco",
-        "dueDate": "2025-11-10",
-        "interests": [
-          "post_partum"
-        ],
-        "preferredLanguage": "en",
-        "childName": "Aurora",
-        "childBirthDate": null
-      }
-    },
-    {
-      "name": "Angela",
-      "email": "angela@esempio.it",
-      "password": "Ciaooo",
-      "role": "user",
-      "id": "1746699809652",
-      "profile": {
-        "parentName": "Angela",
-        "dueDate": "2025-11-10",
-        "interests": [
-          "salute_benessere",
-          "cura_neonato",
-          "post_partum",
-          "viaggi_famiglia"
-        ],
-        "preferredLanguage": "it",
-        "childName": "Aurora",
-        "childBirthDate": null
-      }
     }
   ],
   "articles": [
@@ -105,7 +48,7 @@
       "content": "Capire i pattern di sonno del tuo neonato è fondamentale. Questo articolo esplora le diverse fasi del sonno, come creare una routine e risolvere i problemi comuni...",
       "summary": "Una guida essenziale per aiutare i neo genitori a navigare le sfide del sonno del neonato.",
       "imageUrl": "/images/blog/il-sonno-del-neonato-guida-completa.webp",
-      "publishedAt": "2024-03-10T10:00:00Z",
+      "publishedAt": "2024-05-08T10:00:00Z",
       "tags": [
         "neonato",
         "sonno",
@@ -122,7 +65,7 @@
       "content": "Lo svezzamento è una tappa importante. Scopri i segnali che indicano che il tuo bambino è pronto, quali cibi offrire e come rendere questa transizione serena e sicura...",
       "summary": "Consigli pratici e linee guida per iniziare lo svezzamento del tuo bambino con successo.",
       "imageUrl": "/images/blog/svezzamento-quando-e-come-iniziare.webp",
-      "publishedAt": "2024-03-15T14:30:00Z",
+      "publishedAt": "2024-05-07T14:30:00Z",
       "tags": [
         "svezzamento",
         "alimentazione",
@@ -139,7 +82,7 @@
       "content": "Il gioco è il lavoro del bambino. Esploriamo i tipi di giochi adatti per ogni fase di crescita nei primi mesi e come questi supportano lo sviluppo cognitivo e motorio...",
       "summary": "Idee e suggerimenti per giochi educativi che favoriscono la crescita e l'apprendimento del tuo bambino.",
       "imageUrl": "/images/blog/primi-giochi-stimolare-sviluppo.webp",
-      "publishedAt": "2024-03-20T09:00:00Z",
+      "publishedAt": "2024-05-06T09:00:00Z",
       "tags": [
         "giochi",
         "sviluppo",
@@ -157,7 +100,7 @@
       "content": "Il massaggio neonatale non solo rilassa il bambino, ma rafforza anche il legame genitore-figlio. Impara le tecniche base e scopri tutti i benefici di questa pratica amorevole...",
       "summary": "Una guida passo-passo al massaggio neonatale per promuovere benessere e connessione.",
       "imageUrl": "/images/blog/massaggio-neonatale-benefici-tecniche.webp",
-      "publishedAt": "2024-03-25T16:00:00Z",
+      "publishedAt": "2024-05-05T16:00:00Z",
       "tags": [
         "massaggio",
         "neonato",
@@ -175,12 +118,821 @@
       "content": "Viaggiare con un neonato può sembrare una sfida, ma con la giusta preparazione può diventare un'esperienza meravigliosa. Dalla preparazione della valigia alla gestione del jet lag, ecco i nostri consigli...",
       "summary": "Tutto ciò che devi sapere per affrontare viaggi sereni e divertenti con il tuo piccolo.",
       "imageUrl": "/images/blog/viaggiare-con-neonati-consigli-utili.webp",
-      "publishedAt": "2024-04-01T11:00:00Z",
+      "publishedAt": "2024-05-04T11:00:00Z",
       "tags": [
         "viaggi",
         "bambini",
         "famiglia",
         "consigli"
+      ]
+    },
+    {
+      "id": "11",
+      "slug": "settimana-1-sviluppo",
+      "title": "Settimana 1: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 1...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 1.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-01T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 1"
+      ]
+    },
+    {
+      "id": "12",
+      "slug": "settimana-2-sviluppo",
+      "title": "Settimana 2: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 2...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 2.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-02T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 2"
+      ]
+    },
+    {
+      "id": "13",
+      "slug": "settimana-3-sviluppo",
+      "title": "Settimana 3: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 3...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 3.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-03T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 3"
+      ]
+    },
+    {
+      "id": "14",
+      "slug": "settimana-4-sviluppo",
+      "title": "Settimana 4: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 4...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 4.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-04T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 4"
+      ]
+    },
+    {
+      "id": "15",
+      "slug": "settimana-5-sviluppo",
+      "title": "Settimana 5: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 5...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 5.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-05T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 5"
+      ]
+    },
+    {
+      "id": "16",
+      "slug": "settimana-6-sviluppo",
+      "title": "Settimana 6: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 6...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 6.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-06T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 6"
+      ]
+    },
+    {
+      "id": "17",
+      "slug": "settimana-7-sviluppo",
+      "title": "Settimana 7: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 7...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 7.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-07T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 7"
+      ]
+    },
+    {
+      "id": "18",
+      "slug": "settimana-8-sviluppo",
+      "title": "Settimana 8: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 8...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 8.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-08T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 8"
+      ]
+    },
+    {
+      "id": "19",
+      "slug": "settimana-9-sviluppo",
+      "title": "Settimana 9: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 9...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 9.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-09T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 9"
+      ]
+    },
+    {
+      "id": "20",
+      "slug": "settimana-10-sviluppo",
+      "title": "Settimana 10: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 10...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 10.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-10T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 10"
+      ]
+    },
+    {
+      "id": "21",
+      "slug": "settimana-11-sviluppo",
+      "title": "Settimana 11: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 11...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 11.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-11T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 11"
+      ]
+    },
+    {
+      "id": "22",
+      "slug": "settimana-12-sviluppo",
+      "title": "Settimana 12: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 12...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 12.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-12T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 12"
+      ]
+    },
+    {
+      "id": "23",
+      "slug": "settimana-13-sviluppo",
+      "title": "Settimana 13: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 13...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 13.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-13T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 13"
+      ]
+    },
+    {
+      "id": "24",
+      "slug": "settimana-14-sviluppo",
+      "title": "Settimana 14: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 14...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 14.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-14T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 14"
+      ]
+    },
+    {
+      "id": "25",
+      "slug": "settimana-15-sviluppo",
+      "title": "Settimana 15: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 15...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 15.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-15T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 15"
+      ]
+    },
+    {
+      "id": "26",
+      "slug": "settimana-16-sviluppo",
+      "title": "Settimana 16: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 16...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 16.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-16T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 16"
+      ]
+    },
+    {
+      "id": "27",
+      "slug": "settimana-17-sviluppo",
+      "title": "Settimana 17: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 17...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 17.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-17T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 17"
+      ]
+    },
+    {
+      "id": "28",
+      "slug": "settimana-18-sviluppo",
+      "title": "Settimana 18: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 18...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 18.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-18T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 18"
+      ]
+    },
+    {
+      "id": "29",
+      "slug": "settimana-19-sviluppo",
+      "title": "Settimana 19: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 19...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 19.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-19T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 19"
+      ]
+    },
+    {
+      "id": "30",
+      "slug": "settimana-20-sviluppo",
+      "title": "Settimana 20: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 20...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 20.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-20T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 20"
+      ]
+    },
+    {
+      "id": "31",
+      "slug": "settimana-21-sviluppo",
+      "title": "Settimana 21: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 21...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 21.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-21T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 21"
+      ]
+    },
+    {
+      "id": "32",
+      "slug": "settimana-22-sviluppo",
+      "title": "Settimana 22: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 22...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 22.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-22T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 22"
+      ]
+    },
+    {
+      "id": "33",
+      "slug": "settimana-23-sviluppo",
+      "title": "Settimana 23: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 23...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 23.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-23T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 23"
+      ]
+    },
+    {
+      "id": "34",
+      "slug": "settimana-24-sviluppo",
+      "title": "Settimana 24: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 24...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 24.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-24T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 24"
+      ]
+    },
+    {
+      "id": "35",
+      "slug": "settimana-25-sviluppo",
+      "title": "Settimana 25: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 25...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 25.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-25T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 25"
+      ]
+    },
+    {
+      "id": "36",
+      "slug": "settimana-26-sviluppo",
+      "title": "Settimana 26: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 26...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 26.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-26T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 26"
+      ]
+    },
+    {
+      "id": "37",
+      "slug": "settimana-27-sviluppo",
+      "title": "Settimana 27: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 27...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 27.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-27T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 27"
+      ]
+    },
+    {
+      "id": "38",
+      "slug": "settimana-28-sviluppo",
+      "title": "Settimana 28: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 28...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 28.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-28T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 28"
+      ]
+    },
+    {
+      "id": "39",
+      "slug": "settimana-29-sviluppo",
+      "title": "Settimana 29: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 29...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 29.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-29T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 29"
+      ]
+    },
+    {
+      "id": "40",
+      "slug": "settimana-30-sviluppo",
+      "title": "Settimana 30: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 30...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 30.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-30T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 30"
+      ]
+    },
+    {
+      "id": "41",
+      "slug": "settimana-31-sviluppo",
+      "title": "Settimana 31: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 31...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 31.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-01-31T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 31"
+      ]
+    },
+    {
+      "id": "42",
+      "slug": "settimana-32-sviluppo",
+      "title": "Settimana 32: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 32...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 32.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-01T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 32"
+      ]
+    },
+    {
+      "id": "43",
+      "slug": "settimana-33-sviluppo",
+      "title": "Settimana 33: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 33...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 33.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-02T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 33"
+      ]
+    },
+    {
+      "id": "44",
+      "slug": "settimana-34-sviluppo",
+      "title": "Settimana 34: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 34...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 34.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-03T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 34"
+      ]
+    },
+    {
+      "id": "45",
+      "slug": "settimana-35-sviluppo",
+      "title": "Settimana 35: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 35...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 35.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-04T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 35"
+      ]
+    },
+    {
+      "id": "46",
+      "slug": "settimana-36-sviluppo",
+      "title": "Settimana 36: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 36...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 36.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-05T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 36"
+      ]
+    },
+    {
+      "id": "47",
+      "slug": "settimana-37-sviluppo",
+      "title": "Settimana 37: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 37...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 37.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-06T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 37"
+      ]
+    },
+    {
+      "id": "48",
+      "slug": "settimana-38-sviluppo",
+      "title": "Settimana 38: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 38...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 38.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-07T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 38"
+      ]
+    },
+    {
+      "id": "49",
+      "slug": "settimana-39-sviluppo",
+      "title": "Settimana 39: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 39...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 39.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-08T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 39"
+      ]
+    },
+    {
+      "id": "50",
+      "slug": "settimana-40-sviluppo",
+      "title": "Settimana 40: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 40...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 40.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-09T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 40"
+      ]
+    },
+    {
+      "id": "51",
+      "slug": "settimana-41-sviluppo",
+      "title": "Settimana 41: Scopri cosa succede nel pancione!",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Gravidanza",
+      "content": "Contenuto per settimana 41...",
+      "summary": "Sviluppo fetale e sintomi materni per la settimana 41.",
+      "imageUrl": "/images/blog/placeholder-articolo-settimana-gravidanza.webp",
+      "publishedAt": "2024-02-10T10:00:00Z",
+      "tags": [
+        "gravidanza",
+        "settimana 41"
+      ]
+    },
+    {
+      "id": "c3",
+      "slug": "sviluppo-bambino-3-mesi",
+      "title": "Mese 3: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 3...",
+      "summary": "Guida al mese 3 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-03T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 3"
+      ]
+    },
+    {
+      "id": "c4",
+      "slug": "sviluppo-bambino-4-mesi",
+      "title": "Mese 4: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 4...",
+      "summary": "Guida al mese 4 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-04T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 4"
+      ]
+    },
+    {
+      "id": "c5",
+      "slug": "sviluppo-bambino-5-mesi",
+      "title": "Mese 5: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 5...",
+      "summary": "Guida al mese 5 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-05T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 5"
+      ]
+    },
+    {
+      "id": "c6",
+      "slug": "sviluppo-bambino-6-mesi",
+      "title": "Mese 6: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 6...",
+      "summary": "Guida al mese 6 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-06T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 6"
+      ]
+    },
+    {
+      "id": "c7",
+      "slug": "sviluppo-bambino-7-mesi",
+      "title": "Mese 7: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 7...",
+      "summary": "Guida al mese 7 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-07T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 7"
+      ]
+    },
+    {
+      "id": "c8",
+      "slug": "sviluppo-bambino-8-mesi",
+      "title": "Mese 8: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 8...",
+      "summary": "Guida al mese 8 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-08T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 8"
+      ]
+    },
+    {
+      "id": "c9",
+      "slug": "sviluppo-bambino-9-mesi",
+      "title": "Mese 9: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 9...",
+      "summary": "Guida al mese 9 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-09T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 9"
+      ]
+    },
+    {
+      "id": "c10",
+      "slug": "sviluppo-bambino-10-mesi",
+      "title": "Mese 10: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 10...",
+      "summary": "Guida al mese 10 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-10T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 10"
+      ]
+    },
+    {
+      "id": "c11",
+      "slug": "sviluppo-bambino-11-mesi",
+      "title": "Mese 11: Le grandi scoperte del tuo bambino",
+      "authorId": "1",
+      "authorName": "Admin Kibi",
+      "category": "Sviluppo Bambino",
+      "content": "Contenuto per mese 11...",
+      "summary": "Guida al mese 11 di vita: crescita, emozioni e scoperte.",
+      "imageUrl": "/images/blog/placeholder-articolo-mese-sviluppo.webp",
+      "publishedAt": "2024-02-11T10:00:00Z",
+      "tags": [
+        "neonato",
+        "sviluppo",
+        "mese 11"
       ]
     }
   ],
