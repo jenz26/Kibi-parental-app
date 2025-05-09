@@ -1,20 +1,16 @@
 // --- START OF FILE src/api/articleService.js ---
 import axiosInstance from './axiosInstance';
-// Non c'è bisogno di BLOG_ARTICLES_PER_PAGE qui se viene passato come 'limit' dai thunks
 
 export const getArticlesAPI = async (params = {}) => {
-  const { page = 1, limit = 6, category = '', searchTerm = '' } = params; // Default limit a 6 come nel tuo BlogPage
+  const { page = 1, limit = 6, category = '', searchTerm = '' } = params;
   
   let query = `/articles?_page=${page}&_limit=${limit}&_sort=publishedAt&_order=desc`;
 
   if (category) {
-    // Usiamo category_like per un match più flessibile se le categorie nei dati possono avere variazioni
-    // o se vuoi che "Sviluppo" prenda anche "Sviluppo Bambino". 
-    // Se le categorie sono esatte e fisse, puoi usare &category=${encodeURIComponent(category)}
     query += `&category_like=${encodeURIComponent(category)}`;
   }
   if (searchTerm) {
-    query += `&q=${encodeURIComponent(searchTerm)}`; // 'q' per full-text search in json-server
+    query += `&q=${encodeURIComponent(searchTerm)}`;
   }
 
   try {
@@ -26,7 +22,6 @@ export const getArticlesAPI = async (params = {}) => {
     };
   } catch (error) {
     console.error("API Error in getArticlesAPI:", error.response?.data || error.message);
-    // Rilancia l'errore in modo che il thunk possa gestirlo con rejectWithValue
     throw error.response?.data || new Error(error.message || 'Errore nel recupero degli articoli');
   }
 };
@@ -35,11 +30,10 @@ export const getArticleBySlugAPI = async (slug) => {
   try {
     const response = await axiosInstance.get(`/articles?slug=${encodeURIComponent(slug)}`);
     if (response.data && response.data.length > 0) {
-      return response.data[0]; // json-server restituisce un array anche per query su campi unici
+      return response.data[0];
     }
-    // Se l'array è vuoto, l'articolo non è stato trovato
     const err = new Error('Articolo non trovato');
-    // err.status = 404; // Puoi aggiungere uno status se vuoi gestirlo specificamente
+    // err.status = 404; 
     throw err;
   } catch (error) {
     console.error(`API Error in getArticleBySlugAPI for slug ${slug}:`, error.response?.data || error.message);
@@ -59,8 +53,6 @@ export const createArticleAPI = async (articleData) => {
 
 export const updateArticleAPI = async (articleId, articleData) => {
   try {
-    // Usare PATCH per aggiornamenti parziali, PUT per sostituzione completa.
-    // JSON Server di solito gestisce bene PATCH per aggiornare solo i campi inviati.
     const response = await axiosInstance.patch(`/articles/${articleId}`, articleData);
     return response.data;
   } catch (error) {
@@ -72,12 +64,81 @@ export const updateArticleAPI = async (articleId, articleData) => {
 export const deleteArticleAPI = async (articleId) => {
   try {
     await axiosInstance.delete(`/articles/${articleId}`);
-    // Per DELETE, json-server di solito restituisce un oggetto vuoto {} o status 200/204.
-    // Non c'è un vero "dato" da restituire, se non l'ID per la gestione nello store.
-    return articleId; // Restituire l'ID è utile per il reducer.
+    return articleId;
   } catch (error) {
     console.error(`API Error in deleteArticleAPI for ID ${articleId}:`, error.response?.data || error.message);
     throw error.response?.data || new Error(error.message || 'Errore nell\'eliminazione dell\'articolo');
   }
+};
+
+// NUOVA FUNZIONE PER ARTICOLI SUGGERITI
+export const getSuggestedArticlesAPI = async (interests = [], limit = 3, excludeSlug = null) => {
+  if (!interests || interests.length === 0) {
+    return { articles: [], totalCount: 0 };
+  }
+
+  let suggestedArticles = [];
+  const fetchedSlugs = new Set();
+  if (excludeSlug) {
+    fetchedSlugs.add(excludeSlug); // Escludi subito l'articolo principale
+  }
+
+  // Strategia: per ogni interesse, prova a trovare articoli pertinenti
+  // Diamo priorità alle categorie, poi ai tag (simulato con 'q' per json-server)
+  const searchPriorities = ['category_like', 'q']; 
+
+  for (const priority of searchPriorities) {
+    for (const interest of interests) {
+      if (suggestedArticles.length >= limit) break;
+      try {
+        let queryParams = `_limit=${limit * 2}&_sort=publishedAt&_order=desc`; // Fetch un po' di più per avere scelta
+        if (priority === 'category_like') {
+          queryParams += `&category_like=${encodeURIComponent(interest)}`;
+        } else { // 'q'
+          queryParams += `&q=${encodeURIComponent(interest)}`;
+        }
+        
+        const response = await axiosInstance.get(`/articles?${queryParams}`);
+        
+        response.data.forEach(article => {
+          if (!fetchedSlugs.has(article.slug) && suggestedArticles.length < limit) {
+            // Se la priorità è 'q', potremmo voler verificare ulteriormente se l'interesse è nei tag
+            let matchesInterest = true;
+            if (priority === 'q' && Array.isArray(article.tags)) {
+                matchesInterest = article.tags.some(tag => tag.toLowerCase().includes(interest.toLowerCase()));
+            }
+
+            if(matchesInterest){
+                suggestedArticles.push(article);
+                fetchedSlugs.add(article.slug);
+            }
+          }
+        });
+      } catch (error) {
+        console.warn(`Errore nel recuperare articoli per interesse "${interest}" con priorità "${priority}":`, error);
+      }
+    }
+    if (suggestedArticles.length >= limit) break;
+  }
+  
+  // Fallback: se ancora non bastano, prendi gli ultimi articoli generici
+  if (suggestedArticles.length < limit) {
+      try {
+          const response = await axiosInstance.get(`/articles?_limit=${limit}&_sort=publishedAt&_order=desc`);
+          response.data.forEach(article => {
+              if (!fetchedSlugs.has(article.slug) && suggestedArticles.length < limit) {
+                  suggestedArticles.push(article);
+                  fetchedSlugs.add(article.slug);
+              }
+          });
+      } catch (error) {
+          console.warn(`Errore nel recuperare gli ultimi articoli generici:`, error);
+      }
+  }
+
+  return {
+    articles: suggestedArticles.slice(0, limit),
+    totalCount: suggestedArticles.length 
+  };
 };
 // --- END OF FILE src/api/articleService.js ---

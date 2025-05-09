@@ -1,6 +1,6 @@
 // --- START OF FILE src/components/common/InputField.jsx ---
 import clsx from 'clsx';
-import { ExclamationCircleIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'; // <<<< AGGIUNTE EyeIcon, EyeSlashIcon
+import { ExclamationCircleIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 const InputField = ({
   id,
@@ -13,23 +13,30 @@ const InputField = ({
   className = '',
   inputClassName = '',
   labelClassName = '',
-  isPassword = false, // <<<< NUOVA PROP: true se questo è un campo password di base
-  showPassword,       // <<<< NUOVA PROP: lo stato di visibilità (da LoginForm)
-  onTogglePasswordVisibility, // <<<< NUOVA PROP: la funzione per cambiare lo stato
+  isPassword = false,
+  showPassword,
+  onTogglePasswordVisibility,
   ...props
 }) => {
-  const commonInputClasses = `block w-full rounded-md border-0 py-2.5 px-3 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 dark:bg-neutral-dark/30 dark:text-neutral-light dark:placeholder-neutral-default/70 dark:focus:ring-primary-light`;
+  const commonInputClasses = `block w-full rounded-md border-0 py-2.5 px-3 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 bg-white dark:bg-neutral-dark/50 text-neutral-dark dark:text-neutral-light placeholder-neutral-default dark:placeholder-neutral-default/70 focus:ring-primary dark:focus:ring-primary-light`;
+  // NOTA: Aggiunto bg-white a commonInputClasses per light mode esplicito, e text-neutral-dark
 
-  const errorClasses = `text-red-600 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-red-500 dark:focus:ring-red-500`;
-  const normalClasses = `text-neutral-dark ring-neutral-default/50 focus:ring-primary dark:ring-neutral-dark/70 dark:focus:ring-primary-light`;
+  const errorClasses = `ring-red-500 dark:ring-red-500 placeholder:text-red-400 dark:placeholder:text-red-400/70 focus:ring-red-500 dark:focus:ring-red-500`;
+  const normalClasses = `ring-neutral-default/50 dark:ring-neutral-dark/70`; // Rimossi colori testo da qui, gestiti da commonInputClasses
 
-  // Determina il tipo di input effettivo
   const actualType = isPassword ? (showPassword ? 'text' : 'password') : type;
 
   return (
     <div className={clsx('mb-4', className)}>
       {label && (
-        <label htmlFor={id || name} className={clsx("block text-sm font-medium leading-6 text-neutral-dark dark:text-neutral-light mb-1", labelClassName)}>
+        <label 
+          htmlFor={id || name} 
+          className={clsx(
+            "block text-sm font-medium leading-6 mb-1",
+            "text-neutral-dark dark:text-neutral-light", // <<<<<< COLORE LABEL AGGIORNATO PER DARK MODE
+            labelClassName
+          )}
+        >
           {label}
         </label>
       )}
@@ -47,7 +54,7 @@ const InputField = ({
           />
         ) : (
           <input
-            type={actualType} // <<<< USA actualType
+            type={actualType}
             id={id || name}
             name={name}
             placeholder={placeholder}
@@ -55,20 +62,18 @@ const InputField = ({
             className={clsx(
               commonInputClasses,
               error ? errorClasses : normalClasses,
-              isPassword && "pr-10", // Aggiungi padding a destra se è un campo password per far spazio all'icona
+              isPassword && "pr-10",
               inputClassName
             )}
             aria-invalid={!!error}
             {...props}
           />
         )}
-        {/* Icona di errore */}
-        {error && !isPassword && ( // Non mostrare l'icona di errore se c'è già l'icona occhio
+        {error && !isPassword && (
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
             <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
           </div>
         )}
-        {/* Pulsante Mostra/Nascondi Password */}
         {isPassword && (
           <button
             type="button"
